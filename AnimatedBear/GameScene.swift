@@ -45,13 +45,20 @@ class GameScene: SKScene {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
+        let location = touches.anyObject()?.locationInNode(self)
+        var multiplierForDirection: CGFloat = 0;
+        if location?.x <= CGRectGetMidX(self.frame) {
+            multiplierForDirection = 1
+        } else {
+            multiplierForDirection = -1
+        }
+        self.bear.xScale = fabs(self.bear.xScale) * multiplierForDirection
+        self.walkingBear()
+    }
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
-        /* Called when a touch begins */
-        
-        for touch: AnyObject in touches {
-            let location = touch.locationInNode(self)
-        }
+
     }
    
     override func update(currentTime: CFTimeInterval) {
