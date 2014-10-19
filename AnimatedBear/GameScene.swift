@@ -48,17 +48,45 @@ class GameScene: SKScene {
     override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
         let location = touches.anyObject()?.locationInNode(self)
         var multiplierForDirection: CGFloat = 0;
-        if location?.x <= CGRectGetMidX(self.frame) {
+        let screenSize = self.frame.size
+        let bearVelocity: Float = Float(screenSize.width)/3
+        let moveDifference = CGPoint(x: location!.x - self.bear.position.x, y: location!.y - self.bear.position.y)
+        let distanceToMove: Float = sqrtf(Float(moveDifference.x * moveDifference.x + moveDifference.y * moveDifference.y))
+        let moveDuration = distanceToMove / bearVelocity
+        
+        if moveDifference.x < 0 {
             multiplierForDirection = 1
         } else {
             multiplierForDirection = -1
         }
+        
         self.bear.xScale = fabs(self.bear.xScale) * multiplierForDirection
-        self.walkingBear()
+        
+        if (self.bear.actionForKey("bearMoving") != nil) {
+            self.bear.removeActionForKey("bearMoving")
+        }
+        
+        if self.actionForKey("walkingInPlaceBear") == nil {
+            self.walkingBear()
+        }
+        
+        let moveAction = SKAction.moveTo(location!, duration: NSTimeInterval(moveDuration))
+        let doneAction = SKAction.runBlock { () -> Void in
+            print("Animation Completed")
+            self.bearMoveEnd()
+        }
+        
+        let moveActionWithDone = SKAction.sequence([moveAction, doneAction])
+        self.bear.runAction(moveActionWithDone, withKey: "bearMoving")
     }
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
 
+    }
+    
+    func bearMoveEnd()
+    {
+        self.bear.removeAllActions()
     }
    
     override func update(currentTime: CFTimeInterval) {
