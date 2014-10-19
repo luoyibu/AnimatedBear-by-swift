@@ -24,7 +24,7 @@ class GameScene: SKScene {
         let walkFrames = NSMutableArray()
         let bearAnimatedAtlas = SKTextureAtlas(named: "BearImages")
         let numImages = bearAnimatedAtlas.textureNames.count
-        for i in 0..<numImages/2 {
+        for i in 1...numImages/2 {
             let textureName = String(format: "bear%i", i)
             let temp = bearAnimatedAtlas.textureNamed(textureName)
             walkFrames.addObject(temp)
@@ -38,6 +38,7 @@ class GameScene: SKScene {
         self.bear.position = CGPoint(x: CGRectGetMidX(self.frame), y: CGRectGetMidY(self.frame))
         self.addChild(self.bear)
         self.walkingBear()
+
     }
 
     required init(coder aDecoder: NSCoder) {
@@ -50,7 +51,6 @@ class GameScene: SKScene {
         
         for touch: AnyObject in touches {
             let location = touch.locationInNode(self)
-            
         }
     }
    
