@@ -8,13 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		38097C9D19F35DEF00917C0D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38097C9C19F35DEF00917C0D /* AppDelegate.swift */; };
-		38097C9F19F35DEF00917C0D /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 38097C9E19F35DEF00917C0D /* GameScene.sks */; };
 		38097CA119F35DEF00917C0D /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38097CA019F35DEF00917C0D /* GameScene.swift */; };
 		38097CA319F35DEF00917C0D /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38097CA219F35DEF00917C0D /* GameViewController.swift */; };
 		38097CA619F35DEF00917C0D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38097CA419F35DEF00917C0D /* Main.storyboard */; };
 		38097CA819F35DEF00917C0D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 38097CA719F35DEF00917C0D /* Images.xcassets */; };
 		38097CAB19F35DEF00917C0D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 38097CA919F35DEF00917C0D /* LaunchScreen.xib */; };
 		38097CB719F35DEF00917C0D /* AnimatedBearTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38097CB619F35DEF00917C0D /* AnimatedBearTests.swift */; };
+		38097CC119F35E7E00917C0D /* BearImages.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 38097CC019F35E7E00917C0D /* BearImages.atlas */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,7 +31,6 @@
 		38097C9719F35DEF00917C0D /* AnimatedBear.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnimatedBear.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		38097C9B19F35DEF00917C0D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		38097C9C19F35DEF00917C0D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		38097C9E19F35DEF00917C0D /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		38097CA019F35DEF00917C0D /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		38097CA219F35DEF00917C0D /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		38097CA519F35DEF00917C0D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -40,6 +39,7 @@
 		38097CB019F35DEF00917C0D /* AnimatedBearTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AnimatedBearTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		38097CB519F35DEF00917C0D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		38097CB619F35DEF00917C0D /* AnimatedBearTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedBearTests.swift; sourceTree = "<group>"; };
+		38097CC019F35E7E00917C0D /* BearImages.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = BearImages.atlas; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,8 +81,8 @@
 		38097C9919F35DEF00917C0D /* AnimatedBear */ = {
 			isa = PBXGroup;
 			children = (
+				38097CC019F35E7E00917C0D /* BearImages.atlas */,
 				38097C9C19F35DEF00917C0D /* AppDelegate.swift */,
-				38097C9E19F35DEF00917C0D /* GameScene.sks */,
 				38097CA019F35DEF00917C0D /* GameScene.swift */,
 				38097CA219F35DEF00917C0D /* GameViewController.swift */,
 				38097CA419F35DEF00917C0D /* Main.storyboard */,
@@ -200,7 +200,7 @@
 			files = (
 				38097CAB19F35DEF00917C0D /* LaunchScreen.xib in Resources */,
 				38097CA819F35DEF00917C0D /* Images.xcassets in Resources */,
-				38097C9F19F35DEF00917C0D /* GameScene.sks in Resources */,
+				38097CC119F35E7E00917C0D /* BearImages.atlas in Resources */,
 				38097CA619F35DEF00917C0D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -415,6 +415,7 @@
 				38097CBC19F35DEF00917C0D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		38097CBD19F35DEF00917C0D /* Build configuration list for PBXNativeTarget "AnimatedBearTests" */ = {
 			isa = XCConfigurationList;
@@ -423,6 +424,7 @@
 				38097CBF19F35DEF00917C0D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

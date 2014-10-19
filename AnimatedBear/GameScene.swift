@@ -9,15 +9,41 @@
 import SpriteKit
 
 class GameScene: SKScene {
-    override func didMoveToView(view: SKView) {
-        /* Setup your scene here */
-        let myLabel = SKLabelNode(fontNamed:"Chalkduster")
-        myLabel.text = "Hello, World!";
-        myLabel.fontSize = 65;
-        myLabel.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame));
-        
-        self.addChild(myLabel)
+    
+    var bear: SKSpriteNode
+    var bearWorkingFrames: NSArray
+    
+    func walkingBear()
+    {
+        let walkAction = SKAction.animateWithTextures(self.bearWorkingFrames, timePerFrame: 0.1, resize: false, restore: true)
+        self.bear .runAction(SKAction.repeatActionForever(walkAction), withKey: "walkingInPlaceBear")
     }
+    
+    override init(size: CGSize) {
+
+        let walkFrames = NSMutableArray()
+        let bearAnimatedAtlas = SKTextureAtlas(named: "BearImages")
+        let numImages = bearAnimatedAtlas.textureNames.count
+        for i in 0..<numImages/2 {
+            let textureName = String(format: "bear%i", i)
+            let temp = bearAnimatedAtlas.textureNamed(textureName)
+            walkFrames.addObject(temp)
+        }
+        self.bearWorkingFrames = walkFrames
+        
+        let temp: AnyObject = self.bearWorkingFrames[0];
+        self.bear = SKSpriteNode(texture: temp as SKTexture)
+        super.init(size: size)
+        
+        self.bear.position = CGPoint(x: CGRectGetMidX(self.frame), y: CGRectGetMidY(self.frame))
+        self.addChild(self.bear)
+        self.walkingBear()
+    }
+
+    required init(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
         /* Called when a touch begins */
@@ -25,17 +51,6 @@ class GameScene: SKScene {
         for touch: AnyObject in touches {
             let location = touch.locationInNode(self)
             
-            let sprite = SKSpriteNode(imageNamed:"Spaceship")
-            
-            sprite.xScale = 0.5
-            sprite.yScale = 0.5
-            sprite.position = location
-            
-            let action = SKAction.rotateByAngle(CGFloat(M_PI), duration:1)
-            
-            sprite.runAction(SKAction.repeatActionForever(action))
-            
-            self.addChild(sprite)
         }
     }
    
